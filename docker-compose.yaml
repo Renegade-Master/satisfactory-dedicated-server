@@ -2,5 +2,28 @@ version: "3.6"
 
 services:
   satisfactory:
+    build:
+      context: .
+      dockerfile: docker/satisfactory-server.Dockerfile
     restart: always
     user: steam
+    ports:
+      - target: 15777
+        published: 15777
+        protocol: udp
+      - target: 15000
+        published: 15000
+        protocol: udp
+      - target: 7777
+        published: 7777
+        protocol: udp
+    volumes:
+      - installdir:/home/steam/SatisfactoryDedicatedServer:z
+
+volumes:
+  installdir:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./SatisfactoryDedicatedServer

@@ -28,10 +28,24 @@ The following are instructions for running the server without using Docker.
 
 The following are instructions for running the server using the Docker image.
 
-1. *ToDo*
+1. Build the image:
+
+    ```shell
+    docker build -t satisfactory-server:1.0.0 -f docker/satisfactory-server.Dockerfile .
+    ```
+
+2. Run the container:
+
+    ```shell
+    docker run satisfactory-server:1.0.0 -p -p 15777/udp -p 15000/udp -p 7777/udp
+    ```
 
 ### Docker-Compose
 
 The following are instructions for running the server using Docker-Compose.
 
-1. *ToDo*
+1. Run the following command:
+
+    ```shell
+    docker-compose up -d
+    ```

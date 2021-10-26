@@ -1,0 +1,14 @@
+///////////////////////////////////////////////////////////////////////
+// SteamCMD installation script for Satisfactory Dedicated Server
+///////////////////////////////////////////////////////////////////////
+
+@ShutdownOnFailedCommand 0
+@NoPromptForPassword 1
+
+login anonymous
+
+force_install_dir /home/steam/SatisfactoryDedicatedServer
+
+app_update 1690800
+
+quit
