@@ -37,7 +37,7 @@ The following are instructions for running the server using the Docker image.
 2. Run the container:
 
     ```shell
-    docker run satisfactory-server:1.0.0 -p -p 15777/udp -p 15000/udp -p 7777/udp
+    docker run satisfactory-server:1.0.0 -p 15777/udp -p 15000/udp -p 7777/udp
     ```
 
 ### Docker-Compose
