@@ -40,7 +40,7 @@ The following are instructions for running the server using the Docker image.
     mkdir SatisfactoryDedicatedServer
 
     docker run \
-        --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer 
+        --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer \
         -p 15777:15777/udp -p 15000:15000/udp -p 7777:777/udp \
         renegademaster/satisfactory-dedicated-server:1.0.0
     ```
