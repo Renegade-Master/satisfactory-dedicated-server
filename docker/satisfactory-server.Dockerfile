@@ -6,7 +6,7 @@
 FROM ubuntu:impish-20211015 as downloader
 
 # Install Steam dependencies
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y \
+RUN apt-get update && apt-get autoremove -y \
     && apt-get install -y \
         wget
 
@@ -25,20 +25,19 @@ LABEL com.renegademaster.satisfactory-dedicated-server.authors="Renegade-Master"
 # Set local working directory
 WORKDIR /home/steam
 
-# Install Steam dependencies
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y \
-    && apt-get install -y \
-        lib32stdc++6 ca-certificates
-
-# Make a Steam User
-RUN useradd -m steam
+# Install Steam dependencies, and trim image bloat
+RUN apt-get update && apt-get autoremove -y \
+    && apt-get install -y --no-install-recommends \
+        lib32stdc++6 ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy the Steam installation from the previous build stage
 COPY --from=downloader /app /home/steam
 COPY src /home/steam/
 
-# Change the ownership of the Steam directory
-RUN chown -R steam:steam /home/steam
+# ake a Steam User, and change the ownership of the Steam directory
+RUN useradd -m steam \
+    && chown -R steam:steam /home/steam
 
 # Switch to the Steam User
 USER steam

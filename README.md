@@ -6,9 +6,14 @@ This server implementation is not official.
 
 ## Description
 
-Dedicated Server for Satisfactory using Docker, and optionally Docker-Compose.
+Dedicated Server for Satisfactory using Docker, and optionally Docker-Compose.  
+Built from scratch to be the smallest Satisfactory Dedicated Server around!
 
 ## Links
+
+Source:
+  - [GitHub](https://github.com/Renegade-Master/satisfactory-dedicated-server)
+  - [DockerHub](https://hub.docker.com/r/renegademaster/satisfactory-dedicated-server)
 
 Resource links:
   - [Satisfactory Dedicated Server Wiki](https://satisfactory.fandom.com/wiki/Dedicated_servers)
@@ -18,12 +23,6 @@ Resource links:
 
 ## Instructions
 
-### Unmanaged
-
-The following are instructions for running the server without using Docker.
-
-1. *ToDo*
-
 ### Docker
 
 The following are instructions for running the server using the Docker image.
@@ -31,7 +30,7 @@ The following are instructions for running the server using the Docker image.
 1. Build the image:
 
     ```shell
-    docker build -t renegademaster/satisfactory-dedicated-server:1.0.0 -f docker/satisfactory-server.Dockerfile .
+    docker build -t renegademaster/satisfactory-dedicated-server:<tag> -f docker/satisfactory-server.Dockerfile .
     ```
 
 2. Run the container:
@@ -39,10 +38,10 @@ The following are instructions for running the server using the Docker image.
     ```shell
     mkdir SatisfactoryDedicatedServer
 
-    docker run \
-        --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer \
+    docker run --detach \
+        --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer 
         -p 15777:15777/udp -p 15000:15000/udp -p 7777:777/udp \
-        renegademaster/satisfactory-dedicated-server:1.0.0
+        renegademaster/satisfactory-dedicated-server:<tag>
     ```
 
 ### Docker-Compose
