@@ -19,6 +19,7 @@ services:
         protocol: udp
     volumes:
       - installdir:/home/steam/SatisfactoryDedicatedServer:z
+      - savedir:/home/steam/.config/Epic/FactoryGame/Saved/SaveGames:z
 
 volumes:
   installdir:
@@ -27,3 +28,9 @@ volumes:
       o: bind
       type: none
       device: ./SatisfactoryDedicatedServer
+  savedir:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./SatisfactorySaveGames

@@ -12,14 +12,16 @@ Built from scratch to be the smallest Satisfactory Dedicated Server around!
 ## Links
 
 Source:
-  - [GitHub](https://github.com/Renegade-Master/satisfactory-dedicated-server)
-  - [DockerHub](https://hub.docker.com/r/renegademaster/satisfactory-dedicated-server)
+
+- [GitHub](https://github.com/Renegade-Master/satisfactory-dedicated-server)
+- [DockerHub](https://hub.docker.com/r/renegademaster/satisfactory-dedicated-server)
 
 Resource links:
-  - [Satisfactory Dedicated Server Wiki](https://satisfactory.fandom.com/wiki/Dedicated_servers)
-  - [Satisfactory Homepage](https://www.satisfactorygame.com/)
-  - [Steam Store Page](https://store.steampowered.com/app/526870/satisfactory)
-  - [Epic Games Store Page](https://www.epicgames.com/store/en-US/p/satisfactory)
+
+- [Satisfactory Dedicated Server Wiki](https://satisfactory.fandom.com/wiki/Dedicated_servers)
+- [Satisfactory Homepage](https://www.satisfactorygame.com/)
+- [Steam Store Page](https://store.steampowered.com/app/526870/satisfactory)
+- [Epic Games Store Page](https://www.epicgames.com/store/en-US/p/satisfactory)
 
 ## Instructions
 
@@ -28,19 +30,19 @@ Resource links:
 The following are instructions for running the server using the Docker image.
 
 1. Acquire the image locally:
-   * Pull the image from DockerHub:
+    * Pull the image from DockerHub:
 
-     ```shell
-     docker pull renegademaster/satisfactory-dedicated-server:<tag>
-     ```
-   * Or alternatively, build the image:
+      ```shell
+      docker pull renegademaster/satisfactory-dedicated-server:<tag>
+      ```
+    * Or alternatively, build the image:
 
-     ```shell
-     git clone https://github.com/Renegade-Master/satisfactory-dedicated-server.git \
-         && cd satisfactory-dedicated-server
-     
-     docker build -t renegademaster/satisfactory-dedicated-server:<tag> -f docker/satisfactory-server.Dockerfile .
-     ```
+      ```shell
+      git clone https://github.com/Renegade-Master/satisfactory-dedicated-server.git \
+          && cd satisfactory-dedicated-server
+
+      docker build -t renegademaster/satisfactory-dedicated-server:<tag> -f docker/satisfactory-server.Dockerfile .
+      ```
 
 2. Run the container:
 
@@ -48,7 +50,8 @@ The following are instructions for running the server using the Docker image.
    mkdir SatisfactoryDedicatedServer
 
    docker run --detach \
-       --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer 
+       --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer \
+       --mount type=bind,source="$(pwd)/SatisfactorySaveGames",target=/home/steam/.config/Epic/FactoryGame/Saved/SaveGames \ 
        -p 15777:15777/udp -p 15000:15000/udp -p 7777:777/udp \
        renegademaster/satisfactory-dedicated-server:<tag>
    ```
@@ -58,7 +61,7 @@ The following are instructions for running the server using the Docker image.
 The following are instructions for running the server using Docker-Compose.
 
 1. Download the repository:
-   
+
    ```shell
    git clone https://github.com/Renegade-Master/satisfactory-dedicated-server.git \
        && cd satisfactory-dedicated-server
