@@ -27,29 +27,44 @@ Resource links:
 
 The following are instructions for running the server using the Docker image.
 
-1. Build the image:
+1. Acquire the image locally:
+   * Pull the image from DockerHub:
 
-    ```shell
-    docker build -t renegademaster/satisfactory-dedicated-server:<tag> -f docker/satisfactory-server.Dockerfile .
-    ```
+     ```shell
+     docker pull renegademaster/satisfactory-dedicated-server:<tag>
+     ```
+   * Or alternatively, build the image:
+
+     ```shell
+     git clone https://github.com/Renegade-Master/satisfactory-dedicated-server.git \
+         && cd satisfactory-dedicated-server
+     
+     docker build -t renegademaster/satisfactory-dedicated-server:<tag> -f docker/satisfactory-server.Dockerfile .
+     ```
 
 2. Run the container:
 
-    ```shell
-    mkdir SatisfactoryDedicatedServer
+   ```shell
+   mkdir SatisfactoryDedicatedServer
 
-    docker run --detach \
-        --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer 
-        -p 15777:15777/udp -p 15000:15000/udp -p 7777:777/udp \
-        renegademaster/satisfactory-dedicated-server:<tag>
-    ```
+   docker run --detach \
+       --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer 
+       -p 15777:15777/udp -p 15000:15000/udp -p 7777:777/udp \
+       renegademaster/satisfactory-dedicated-server:<tag>
+   ```
 
 ### Docker-Compose
 
 The following are instructions for running the server using Docker-Compose.
 
-1. Run the following command:
+1. Download the repository:
+   
+   ```shell
+   git clone https://github.com/Renegade-Master/satisfactory-dedicated-server.git \
+       && cd satisfactory-dedicated-server
+   ```
+2. Run the following command:
 
-    ```shell
-    docker-compose up -d
-    ```
+   ```shell
+   docker-compose up -d
+   ```
