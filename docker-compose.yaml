@@ -1,7 +1,7 @@
 version: "3.6"
 
 services:
-  satisfactory:
+  satisfactory-server:
     build:
       context: .
       dockerfile: docker/satisfactory-server.Dockerfile
