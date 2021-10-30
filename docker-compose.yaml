@@ -18,19 +18,7 @@ services:
         published: 7777
         protocol: udp
     volumes:
-      - installdir:/home/steam/SatisfactoryDedicatedServer:z
-      - savedir:/home/steam/.config/Epic/FactoryGame/Saved/SaveGames:z
-
-volumes:
-  installdir:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: ./SatisfactoryDedicatedServer
-  savedir:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: ./SatisfactorySaveGames
+      - ./SatisfactoryDedicatedServer:/home/steam/SatisfactoryDedicatedServer
+      - ./SatisfactorySaveGames:/home/steam/.config/Epic/FactoryGame/Saved/SaveGames
+    cap_drop:
+      - ALL
