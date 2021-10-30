@@ -3,6 +3,9 @@
 #   Description: Base image for running a Dedicated Satisfactory server.
 #######################################################################
 
+ARG UID=1000
+ARG GID=1000
+
 FROM ubuntu:impish-20211015 as downloader
 
 # Install Steam dependencies
@@ -20,6 +23,9 @@ RUN wget "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
     && rm steamcmd_linux.tar.gz
 
 FROM ubuntu:impish-20211015 as runner
+
+ARG UID
+ARG GID
 
 LABEL com.renegademaster.satisfactory-dedicated-server.authors="Renegade-Master" \
     com.renegademaster.satisfactory-dedicated-server.source-repository="https://github.com/Renegade-Master/satisfactory-dedicated-server" \
@@ -47,11 +53,11 @@ COPY src /home/steam/
 RUN mkdir -p /home/steam/.steam/sdk64 \
     && ln -s /usr/lib/i386-linux-gnu/libSDL2-2.0.so.0.14.0 /usr/lib/i386-linux-gnu/libSDL2-2.0.so.0 \
     && ln -s /home/steam/linux64/steamclient.so /home/steam/.steam/sdk64/steamclient.so \
-    && useradd -m steam \
-    && chown -R steam:steam /home/steam
+    && useradd -u ${UID} -m -d /home/steam steam \
+    && chown -R ${UID}:${GID} /home/steam
 
 # Switch to the Steam User
-USER steam
+USER ${UID}:${GID}
 
 # Run forever
 ENTRYPOINT ["./run_satisfactory_server.sh"]

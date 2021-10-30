@@ -70,5 +70,7 @@ The following are instructions for running the server using Docker-Compose.
 2. Run the following command:
 
    ```shell
+   mkdir SatisfactoryDedicatedServer SatisfactorySaveGames
+
    docker-compose up -d
    ```

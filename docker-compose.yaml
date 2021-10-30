@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: docker/satisfactory-server.Dockerfile
     restart: always
-    user: steam
+    user: "1000:1000"
     ports:
       - target: 15777
         published: 15777
