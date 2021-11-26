@@ -16,7 +16,7 @@ function start_satisfactory() {
 function update_satisfactory() {
     printf "\n### Updating Satisfactory Server...\n"
 
-    /home/steam/steamcmd.sh +runscript /home/steam/install_satisfactory.scmd
+    $STEAM_PATH +runscript /home/steam/install_satisfactory.scmd
 
     printf "\n### Satisfactory Server updated.\n"
 }

@@ -1,2 +1,4 @@
-SatisfactoryDedicatedServer/
-SatisfactorySaveGames/
+*
+!src
+!LICENSE
+!README.md
