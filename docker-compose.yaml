@@ -10,6 +10,9 @@ services:
         GROUP_ID: 1000
     restart: always
     user: "1000:1000"
+    environment:
+      - "GAME_VERSION=public"
+      - "MAX_PLAYERS=16"
     ports:
       - target: 15777
         published: 15777
