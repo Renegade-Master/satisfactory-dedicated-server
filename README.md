@@ -36,7 +36,7 @@ The following are instructions for running the server using the Docker image.
     * Pull the image from DockerHub:
 
       ```shell
-      docker pull renegademaster/satisfactory-dedicated-server:<tag>
+      docker pull renegademaster/satisfactory-dedicated-server:<tagname>
       ```
     * Or alternatively, build the image:
 
@@ -48,9 +48,18 @@ The following are instructions for running the server using the Docker image.
       ```
 
 2. Run the container:  
-   ***Note**: Arguments inside square brackets are optional*
-    - Game Version [`public`, `experimental`]
-    - Maximum players [*Any numerical value is accepted, but more than 16 is not advised*]
+   *Optional arguments table*:
+
+   | Argument       | Description                           | Values                   | Default          |
+   |----------------|---------------------------------------|--------------------------|------------------|
+   | `GAME_VERSION` | Game version to serve                 | `public`, `experimental` | `public`         |
+   | `MAX_PLAYERS`  | Max player count                      | 1-16+                    | 16               |
+   | `BIND_IP`      | IP to bind the server to              | 127.0.0.1                | 0.0.0.0 / \[::\] |
+   | `QUERY_PORT`   | Port for other players to connect to  | 1000-65535               | 15777            |
+   | `GAME_PORT`    | Port for sending game data to clients | 1000-65535               | 7777             |
+
+   ***Note**: Arguments inside square brackets are optional. If the default ports are to be overridden, then the
+   `published` ports below must also be changed*
 
    ```shell
    mkdir SatisfactoryDedicatedServer SatisfactorySaveGames
@@ -63,7 +72,10 @@ The following are instructions for running the server using the Docker image.
        --user=$(id -u):$(id -g) \
        [--env=GAME_VERSION=<value>] \
        [--env=MAX_PLAYERS=<value>] \
-       renegademaster/satisfactory-dedicated-server[:<tag>]
+       [--env=BIND_IP=<value>] \
+       [--env=QUERY_PORT=<value>] \
+       [--env=GAME_PORT=<value>] \
+       renegademaster/satisfactory-dedicated-server[:<tagname>]
    ```
 
 ### Docker-Compose
@@ -78,11 +90,19 @@ The following are instructions for running the server using Docker-Compose.
    ```
 
 2. Make any configuration changes you want to in the `docker-compose.yaml` file. In
-   the `services.satisfactory-server. environment` section, you can change values for
-    - Game Version [`public`, `experimental`]
-    - Maximum players [*Any numerical value is accepted, but more than 16 is not advised*]
+   the `services.satisfactory-server.environment` section, you can change values for:
 
-3. In the `docker-compose.yaml` file, you must change the `service.satisfactory-server.user` values to match your local
+   | Argument       | Description                           | Values                   | Default          |
+   |----------------|---------------------------------------|--------------------------|------------------|
+   | `GAME_VERSION` | Game version to serve                 | `public`, `experimental` | `public`         |
+   | `MAX_PLAYERS`  | Max player count                      | 1-16+                    | 16               |
+   | `BIND_IP`      | IP to bind the server to              | 127.0.0.1                | 0.0.0.0 / \[::\] |
+   | `QUERY_PORT`   | Port for other players to connect to  | 1000-65535               | 15777            |
+   | `GAME_PORT`    | Port for sending game data to clients | 1000-65535               | 7777             |
+
+   ***Note**: If the default ports are to be overridden, then the `published` ports must also be changed*
+
+4. In the `docker-compose.yaml` file, you must change the `service.satisfactory-server.user` values to match your local
    user. To find your local user and group ids, run the following command:
 
    ```shell

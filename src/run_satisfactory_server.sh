@@ -5,13 +5,18 @@
 #       instance.
 #######################################################################
 
+# Set to `-x` for Debug logging
 set +x
 
 # Start the Satisfactory Server
 function start_satisfactory() {
     printf "\n### Starting Satisfactory Server...\n"
 
-    "$BASE_GAME_DIR"/FactoryServer.sh
+    "$BASE_GAME_DIR"/FactoryServer.sh \
+        -multihome="$BIND_IP" \
+        -ServerQueryPort="$QUERY_PORT" \
+        -Port="$GAME_PORT"
+
 }
 
 function apply_postinstall_config() {
@@ -74,6 +79,15 @@ function set_variables() {
 [/Script/Engine.GameSession]
 MaxPlayers=$MAX_PLAYERS
 EOF
+
+    # Set the IP address variable
+    BIND_IP=${BIND_IP:-"0.0.0.0"}
+
+    # Set the IP Query Port variable
+    QUERY_PORT=${QUERY_PORT:-"15777"}
+
+    # Set the IP Game Port variable
+    GAME_PORT=${GAME_PORT:-"7777"}
 }
 
 ## Main

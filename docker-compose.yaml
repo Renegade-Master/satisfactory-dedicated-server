@@ -13,6 +13,9 @@ services:
     environment:
       - "GAME_VERSION=public"
       - "MAX_PLAYERS=16"
+      - "BIND_IP=0.0.0.0"
+      - "QUERY_PORT=15777"
+      - "GAME_PORT=7777"
     ports:
       - target: 15777
         published: 15777
