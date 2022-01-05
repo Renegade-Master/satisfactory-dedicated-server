@@ -7,6 +7,12 @@
 If issues are encountered, please report them on
 the [GitHub repository](https://github.com/Renegade-Master/satisfactory-dedicated-server/issues/new/choose)
 
+## Badges
+
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/renegademaster/satisfactory-dedicated-server?label=Latest%20Version)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/renegademaster/satisfactory-dedicated-server?label=Image%20Size)
+![Docker Pulls](https://img.shields.io/docker/pulls/renegademaster/satisfactory-dedicated-server?label=Docker%20Pull%20Count)
+
 ## Description
 
 Dedicated Server for Satisfactory using Docker, and optionally Docker-Compose.  
