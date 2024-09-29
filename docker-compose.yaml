@@ -20,12 +20,21 @@ services:
       - target: 15777
         published: 15777
         protocol: udp
+      - target: 15777
+        published: 15777
+        protocol: tcp
       - target: 15000
         published: 15000
         protocol: udp
+      - target: 15000
+        published: 15000
+        protocol: tcp
       - target: 7777
         published: 7777
         protocol: udp
+      - target: 7777
+        published: 7777
+        protocol: tcp
     volumes:
       - ./SatisfactoryDedicatedServer:/home/steam/SatisfactoryDedicatedServer
       - ./SatisfactorySaveGames:/home/steam/.config/Epic/FactoryGame/Saved/SaveGames
