@@ -73,7 +73,8 @@ The following are instructions for running the server using the Docker image.
    docker run --detach \
        --mount type=bind,source="$(pwd)/SatisfactoryDedicatedServer",target=/home/steam/SatisfactoryDedicatedServer \
        --mount type=bind,source="$(pwd)/SatisfactorySaveGames",target=/home/steam/.config/Epic/FactoryGame/Saved/SaveGames \
-       --publish 15777:15777/udp --publish 15000:15000/udp --publish 7777:777/udp \
+       --publish 15777:15777/udp --publish 15000:15000/udp --publish 7777:7777/udp \
+       --publish 15777:15777/tcp --publish 15000:15000/tcp --publish 7777:7777/tcp \
        --name satisfactory-server \
        --user=$(id -u):$(id -g) \
        [--env=GAME_VERSION=<value>] \
